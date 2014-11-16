@@ -29,13 +29,13 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'terryma/vim-multiple-cursors'
 
 " Fast navigations
-"Plugin 'edsono/vim-matchit'
+Plugin 'edsono/vim-matchit'
 "Plugin 'Lokaltog/vim-easymotion'
 
 " IDE features
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
-Plugin 'humiaozuzu/TabBar'
+"Plugin 'humiaozuzu/TabBar'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
@@ -43,7 +43,7 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'bronson/vim-trailing-whitespace'
 
 " Gits
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'gregsexton/gitv'
 
 " Color scheme
@@ -53,8 +53,11 @@ Plugin 'flazz/vim-colorschemes'
 "Plugin 'davidhalter/jedi-vim'
 
 " Lua
-"Plugin 'xolox/vim-misc'                                                     " required by lua.vim
-"Plugin 'xolox/vim-lua-ftplugin'                                             " Lua file type plug-in for the Vim text editor
+Plugin 'xolox/vim-misc'                                                     " required by lua.vim
+Plugin 'xolox/vim-lua-ftplugin'                                             " Lua file type plug-in for the Vim text editor
+
+" Other utils
+Plugin 'xolox/vim-shell'
 
 call vundle#end()
 " }}}
@@ -95,9 +98,9 @@ set background=dark
 colo solarized
 
 " highlight current line
-"au WinLeave * set nocursorline nocursorcolumn
-"au WinEnter * set cursorline cursorcolumn
-"set cursorline cursorcolumn
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set cursorline cursorcolumn
 
 " }}}
 
@@ -215,10 +218,10 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" Set undo in temp
+"Set undo in temp
 try
-  set undodir=$temp
-  set undofile
+ set undodir=$temp
+ set undofile
 catch
 endtry
 
@@ -228,6 +231,12 @@ map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
 " Shift+Enter and Ctrl+Shift+Enter in insert mode to fast editing
 imap <S-CR> <ESC>o
 imap <C-S-CR> <ESC>O
+
+" Bash like keys for the command line.
+cno <C-H> <HOME>
+cno <C-L> <END>
+cno <C-P> <Up>
+cno <C-N> <Down>
 
 " }}}
 
@@ -363,6 +372,12 @@ nnoremap <leader>a :Ack
 "let g:Powerline_symbols = 'fancy'
 
 " Conflicts fixed
+" Lua supported
+
+let g:lua_complete_omni=1
+
+" remove whitespace on save
+"autocmd BufWritePre * :FixWhitespace
 
 " }}}
 
