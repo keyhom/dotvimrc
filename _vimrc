@@ -56,8 +56,13 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'xolox/vim-misc'                                                     " required by lua.vim
 Plugin 'xolox/vim-lua-ftplugin'                                             " Lua file type plug-in for the Vim text editor
 
+" Json
+Plugin 'elzr/vim-json'
+
 " Other utils
 Plugin 'xolox/vim-shell'
+Plugin 'xolox/vim-reload'
+Plugin 'vim-scripts/a.vim'
 
 call vundle#end()
 " }}}
@@ -375,6 +380,8 @@ nnoremap <leader>a :Ack
 " Lua supported
 
 let g:lua_complete_omni=1
+let g:lua_internal=0
+let g:lua_compiler_name="luajit"
 
 " remove whitespace on save
 "autocmd BufWritePre * :FixWhitespace
