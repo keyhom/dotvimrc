@@ -56,6 +56,10 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'xolox/vim-misc'                                                     " required by lua.vim
 Plugin 'xolox/vim-lua-ftplugin'                                             " Lua file type plug-in for the Vim text editor
 
+" Javascript
+Plugin 'marijnh/tern_for_vim'
+Plugin 'nono/jquery.vim'
+
 " Json
 Plugin 'elzr/vim-json'
 
@@ -354,9 +358,12 @@ let NERDCompactSexyComs=1
 "let g:user_emmet_expandabbr_key='<C-j>'
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd! FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd! FileType html setlocal omnifunc=tern#Complete|call tern#Enable()
+"autocmd! FileType html setlocal omnifunc=tern#Complete|call tern#Enable()|set ft=html.javascript_tern|set ft=html.javascript
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS         " Conflicts with TERN_FOR_VIM
+
 
 " ctrlp
 set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store  " MacOSX/Linux
