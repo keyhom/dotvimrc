@@ -30,7 +30,7 @@ Plugin 'terryma/vim-multiple-cursors'
 
 " Fast navigations
 Plugin 'edsono/vim-matchit'
-"Plugin 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 
 " IDE features
 Plugin 'scrooloose/nerdtree'
@@ -39,7 +39,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
-Plugin 'Lokaltog/vim-powerline'
+"Plugin 'Lokaltog/vim-powerline'
+Plugin 'bling/vim-airline'
 Plugin 'bronson/vim-trailing-whitespace'
 
 " Gits
@@ -58,7 +59,11 @@ Plugin 'xolox/vim-lua-ftplugin'                                             " Lu
 
 " Javascript
 Plugin 'marijnh/tern_for_vim'
-Plugin 'nono/jquery.vim'
+Plugin 'jelera/vim-javascript-syntax'
+" Plugin 'nono/jquery.vim'
+
+" Html5
+Plugin 'othree/html5.vim'
 
 " Json
 Plugin 'elzr/vim-json'
@@ -68,7 +73,7 @@ Plugin 'groenewege/vim-less'
 
 " Other utils
 Plugin 'xolox/vim-shell'
-"Plugin 'xolox/vim-reload'
+Plugin 'xolox/vim-reload'
 Plugin 'vim-scripts/a.vim'
 
 call vundle#end()
@@ -141,7 +146,7 @@ set showcmd                                     " Show typed command in status b
 set title                                       " show file in titlebar
 set laststatus=2                                " Use 2 lines for the status bar
 set matchtime=2                                 " Show matching bracket for 0.2 seconds
-set matchpairs+=<:>                             " Specially for HTML
+"set matchpairs+=<:>                             " Specially for HTML
 "set relativenumber
 set autoread                                    " Set to auto read when a file is changed from the system
 "set wildmenu                                   " Turn on wild menu
@@ -177,7 +182,7 @@ set smarttab
 "set textwidth=78
 
 " default options for 'c/c++" indent.
-set cinoptions=>4,:4,l1,g0,N-s,t0,(0,u0,w1,m1,j1,J1
+autocmd! FileType c,cpp setlocal cinoptions=>4,:4,l1,g0,N-s,t0,(0,u0,w1,m1,j1,J1
 
 " }}}
 
@@ -255,7 +260,6 @@ cno <C-N> <Down>
 " FiletypeEx {{{
 augroup FileTypeEx
   au!
-  autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
   autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
   autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
   autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
@@ -271,11 +275,11 @@ augroup END
 " }}}
 
 " syntax support
-autocmd Syntax javascript set syntax=jquery   " JQuery syntax support
+" autocmd Syntax javascript set syntax=jquery   " JQuery syntax support
 " js
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
+" let g:html_indent_inctags = "html,body,head,tbody"
+" let g:html_indent_script1 = "inc"
+" let g:html_indent_style1 = "inc"
 
 " Plugin Settings {{{
 " Rainbow parentheses for Lisp and variants
@@ -310,7 +314,7 @@ hi Tb_VisibleNormal ctermbg=252 ctermfg=235
 hi Tb_VisibleChanged guifg=green ctermbg=252 ctermfg=white
 
 " easy-motion
-"let g:EasyMotion_leader_key = '<Leader>'
+let g:EasyMotion_leader_key = '<leader>'
 
 " Tagbar
 let g:tagbar_left=0
@@ -361,8 +365,8 @@ let NERDCompactSexyComs=1
 "let g:user_emmet_expandabbr_key='<C-j>'
 
 " Enable omni completion.
-autocmd! FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd! FileType html setlocal omnifunc=tern#Complete|call tern#Enable()
+"autocmd! FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd! FileType html setlocal omnifunc=tern#Complete|call tern#Enable()
 "autocmd! FileType html setlocal omnifunc=tern#Complete|call tern#Enable()|set ft=html.javascript_tern|set ft=html.javascript
 "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS         " Conflicts with TERN_FOR_VIM
@@ -384,7 +388,35 @@ nmap <leader><cr> :nohl<cr>
 nnoremap <leader>a :Ack
 
 " powerline
-"let g:Powerline_symbols = 'fancy'
+set fillchars+=stl:\ ,stlnc:\ 
+let g:Powerline_symbols = 'fancy'
+" airline
+"let g:airline_section_b = '${strftime("%c")}'
+"let g:airline_section_y = ' BN: %{bufnr("%")}'
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#left_sep = '⮀'
+"let g:airline#extensions#tabline#left_alt_sep = '⮁'
+"let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+let g:airline_left_sep = '⮀'
+let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
 
 " Conflicts fixed
 " Lua supported
@@ -392,6 +424,8 @@ nnoremap <leader>a :Ack
 let g:lua_complete_omni=1
 let g:lua_internal=0
 let g:lua_compiler_name="luajit"
+
+let g:indentLine_char='.'
 
 " remove whitespace on save
 "autocmd BufWritePre * :FixWhitespace
