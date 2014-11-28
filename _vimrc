@@ -98,7 +98,7 @@ let mapleader=","
 let g:mapleader=","
 
 " encoding dectection
-"set encoding=utf-8
+set encoding=utf-8
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 
 " enable filetype dectection and ft specific plugin/indent
@@ -165,6 +165,7 @@ set modeline                                    " Enable the modeline
 try
   lang en_US
 catch
+  let $LANG='en_US'
 endtry
 
 " Set the default file types
@@ -394,7 +395,7 @@ let g:Powerline_symbols = 'fancy'
 "let g:airline_section_b = '${strftime("%c")}'
 "let g:airline_section_y = ' BN: %{bufnr("%")}'
 let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#left_sep = '⮀'
+"let g:airline#extensions#tabline#left_sep = '⮀'
 "let g:airline#extensions#tabline#left_alt_sep = '⮁'
 "let g:airline_powerline_fonts = 1
 
@@ -403,19 +404,20 @@ if !exists('g:airline_symbols')
 endif
 
 " unicode symbols
-let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-let g:airline_left_sep = '⮀'
-let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '▶'
+" let g:airline_left_sep = '⮀'
+" let g:airline_right_sep = '«'
+" let g:airline_right_sep = '◀'
+" let g:airline_right_sep = '◀'
+" let g:airline_symbols.linenr = '␊'
+" let g:airline_symbols.linenr = '␤'
+" let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.linenr = 'LN'
+" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '[PASTE]'
 let g:airline_symbols.whitespace = 'Ξ'
 
 " Conflicts fixed
@@ -425,6 +427,7 @@ let g:lua_complete_omni=1
 let g:lua_internal=0
 let g:lua_compiler_name="luajit"
 
+let g:indentLine_enabled=0
 let g:indentLine_char='.'
 
 " remove whitespace on save
@@ -448,8 +451,8 @@ if has('gui_running')
   set guioptions-=e
   "set transparency=30
   set showtabline=2
-  "set columns=140
-  "set lines=40
+  set columns=160
+  set lines=40
   noremap <D-M-left> :tabprevious<cr>
   noremap <D-M-right> :tabnext<cr>
   map <D-1> 1gt
