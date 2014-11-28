@@ -63,9 +63,12 @@ Plugin 'nono/jquery.vim'
 " Json
 Plugin 'elzr/vim-json'
 
+" Less
+Plugin 'groenewege/vim-less'
+
 " Other utils
 Plugin 'xolox/vim-shell'
-Plugin 'xolox/vim-reload'
+"Plugin 'xolox/vim-reload'
 Plugin 'vim-scripts/a.vim'
 
 call vundle#end()
