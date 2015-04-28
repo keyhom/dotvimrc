@@ -62,6 +62,9 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'jelera/vim-javascript-syntax'
 " Plugin 'nono/jquery.vim'
 
+" Actionscript
+Plugin 'keyhom/vim-as3'
+
 " Html5
 Plugin 'othree/html5.vim'
 
