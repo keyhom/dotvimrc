@@ -156,7 +156,7 @@ set autoread                                    " Set to auto read when a file i
 set ruler                                       " Always show current position
 set cmdheight=2                                 " Set 2 lines command bar
 set hidden                                      " Change buffer - without saving
-"set nolazyredraw                                " Don't redraw while executing macros
+set nolazyredraw                                " Don't redraw while executing macros
 "set magic                                       " Set magic on, for regular expressions
 set noerrorbells                                " No sound on errors
 set novisualbell
@@ -186,7 +186,7 @@ set smarttab
 "set textwidth=78
 
 " default options for 'c/c++" indent.
-autocmd! FileType c,cpp setlocal cinoptions=>4,:4,l1,g0,N-s,t0,(0,u0,w1,m1,j1,J1
+autocmd! FileType c,cpp setlocal cinoptions=>4,:4,l1,g0,N-s,t0,(0,u0,w1,m1,j1,J1 ts=4 sw=4 expandtab
 
 " }}}
 
@@ -259,6 +259,9 @@ cno <C-L> <END>
 cno <C-P> <Up>
 cno <C-N> <Down>
 
+" Parenthesis Or Bracket Expanding.
+ino {<cr> {<esc>o}<esc>O
+
 " }}}
 
 " FiletypeEx {{{
@@ -268,7 +271,7 @@ augroup FileTypeEx
   autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
   autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
   autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
-  autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
+  autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0 matchpairs+=<:>
   autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
   autocmd BufNewFile,BufRead *.apt setf apt
   autocmd BufNewFile,BufRead *.vm setf vm
@@ -349,6 +352,24 @@ if executable('coffeetags')
         \ 'h:sections'
     \ ]
     \ }
+
+  let g:tagbar_type_as3 = {
+              \ 'ctagstype' : 'as3',
+              \ 'sort' : 0,
+              \ 'kinds' : [
+              \     'c:class',
+              \     'i:interface',
+              \     'n:namespace',
+              \     'S:static constant',
+              \     'V:static variable',
+              \     'P:static property',
+              \     'F:static function',
+              \     's:constant',
+              \     'v:variable',
+              \     'p:property',
+              \     'f:function'
+              \ ]
+              \ }
 endif
 
 " Nerd Tree
