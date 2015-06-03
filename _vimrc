@@ -115,6 +115,7 @@ syntax on
 
 " color scheme
 set background=dark
+let g:solarized_termcolors = 256 " fixed in terminal
 colo solarized
 
 " highlight current line
