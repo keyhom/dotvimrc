@@ -13,6 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Code completions
 Plugin 'valloric/YouCompleteMe'
+Plugin 'rdnetto/Ycm-Generator'
 Plugin 'mattn/emmet-vim'                                                    " ZenCoding
 Plugin 'Raimondi/delimitMate'
 
@@ -74,6 +75,12 @@ Plugin 'elzr/vim-json'
 " Less
 Plugin 'groenewege/vim-less'
 
+" GLSL
+Plugin 'tikhomirov/vim-glsl'
+
+" CMake
+" Plugin 'jalcine/cmake.vim'
+
 " Other utils
 Plugin 'xolox/vim-shell'
 Plugin 'xolox/vim-reload'
@@ -119,9 +126,9 @@ let g:solarized_termcolors = 256 " fixed in terminal
 colo solarized
 
 " highlight current line
-au WinLeave * set nocursorline nocursorcolumn
-au WinEnter * set cursorline cursorcolumn
-set cursorline cursorcolumn
+" au WinLeave * set nocursorline nocursorcolumn
+" au WinEnter * set cursorline cursorcolumn
+" set cursorline cursorcolumn
 
 " }}}
 
@@ -144,14 +151,14 @@ set mouse=a                                     " Use mouse in all modes
 set report=0                                    " Always report number of lines changed
 set nowrap                                      " Don't wrap lines
 set scrolloff=5                                 " 5 lines above/below cursor when srolling
-"set number                                     " Show line number
+set number                                     " Show line number
 set showmatch                                   " Show matching bracket (briefly jump)
 set showcmd                                     " Show typed command in status bar
 set title                                       " show file in titlebar
 set laststatus=2                                " Use 2 lines for the status bar
 set matchtime=2                                 " Show matching bracket for 0.2 seconds
 "set matchpairs+=<:>                             " Specially for HTML
-"set relativenumber
+set relativenumber
 set autoread                                    " Set to auto read when a file is changed from the system
 "set wildmenu                                   " Turn on wild menu
 set ruler                                       " Always show current position
@@ -397,10 +404,27 @@ let NERDCompactSexyComs=1
 "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS         " Conflicts with TERN_FOR_VIM
 
+" YcmCompleter settings {{{
+
+let g:ycm_filetype_specific_completion_to_disable = {
+            \ 'gitcommit' : 1
+            \ }
+
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>='
+let g:ycm_complete_in_comments = 1 " default is 0.
+let g:ycm_server_log_level = 'warning'
+let g:ycm_autoclose_preview_window_after_insertion = 1 " default is 0
+
+" }}}
 
 " ctrlp
-set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store  " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store,*/proj.*/*  " MacOSX/Linux
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)$|proj\.\v$)',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 " Keybindings for plugin toggle
 "nnoremap <F2> :set invpaste paste?<CR>
@@ -423,23 +447,25 @@ let g:airline#extensions#tabline#enabled=1
 "let g:airline#extensions#tabline#left_sep = '⮀'
 "let g:airline#extensions#tabline#left_alt_sep = '⮁'
 "let g:airline_powerline_fonts = 1
+let g:airline#extensions#eclim#enabled = 1
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
 " unicode symbols
+let g:airline_left_sep = ''
 " let g:airline_left_sep = '»'
 " let g:airline_left_sep = '▶'
 " let g:airline_left_sep = '⮀'
 " let g:airline_right_sep = '«'
-" let g:airline_right_sep = '◀'
+let g:airline_right_sep = '◀'
 " let g:airline_right_sep = '◀'
 " let g:airline_symbols.linenr = '␊'
-" let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '␤'
 " let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.linenr = 'LN'
-" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.linenr = 'LN'
+let g:airline_symbols.branch = '⎇'
 " let g:airline_symbols.paste = 'ρ'
 " let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '[PASTE]'
@@ -454,6 +480,11 @@ let g:lua_compiler_name="luajit"
 
 let g:indentLine_enabled=0
 let g:indentLine_char='.'
+" let g:indentLine_char = '┊'
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#A4E57E'
+let g:indentLine_color_tty_light = 7
+let g:indentLine_color_tty_dark = 1
 
 " remove whitespace on save
 "autocmd BufWritePre * :FixWhitespace
