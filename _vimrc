@@ -9,82 +9,106 @@ call vundle#begin()
 
 " Let Vundle manage Vundle
 " required!
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
-" Code completions
-Plugin 'valloric/YouCompleteMe'
-Plugin 'rdnetto/Ycm-Generator'
-Plugin 'mattn/emmet-vim'                                                    " ZenCoding
-Plugin 'Raimondi/delimitMate'
+"-Code completions
+Plugin 'valloric/YouCompleteMe'                               "  A code-completion engine for Vim.
+Plugin 'rdnetto/Ycm-Generator'                                "  Generates config files for YouCompleteMe.
+Plugin 'mattn/emmet-vim'                                      "  ZenCoding.
+Plugin 'Raimondi/delimitMate'                                 "  provides insert mode auto-completion for quotes, parens, brackets, etc.
+Plugin 'jnurmine/Zenburn'
 
-" snippets
-"Plugin 'SirVer/ultisnips'
+"-Snippets
+Plugin 'SirVer/ultisnips'                                     "  The ultimate snippet solution for Vim.
+Plugin 'honza/vim-snippets'                                   " Snippets are separated from the engine.
 
-" Fast editing
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'sjl/gundo.vim'
-Plugin 'godlygeek/tabular'
-" Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'Yggdroot/indentLine'
-Plugin 'terryma/vim-multiple-cursors'
+"-Fast editing
+"Plugin 'nathanaelkane/vim-indent-guides'                     "  visually displaying indent levels in code.
+Plugin 'tpope/vim-surround'                                   "  quoting/parenthesizing made simple.
+Plugin 'scrooloose/nerdcommenter'                             "  Vim plugin for intensely orgasmic commenting.
+Plugin 'sjl/gundo.vim'                                        "  Visualize your Vim undo tree.
+Plugin 'godlygeek/tabular'                                    "  Vim script for text filtering and alignment.
+Plugin 'Yggdroot/indentLine'                                  "  display the indention levels with thin vertical lines.
+Plugin 'terryma/vim-multiple-cursors'                         "  True Sublime Text style multiple selections for Vim.
 
-" Fast navigations
-Plugin 'edsono/vim-matchit'
-Plugin 'Lokaltog/vim-easymotion'
+"-Fast navigations
+Plugin 'Lokaltog/vim-easymotion'                              "  Vim motion on speed!
 
-" IDE features
-Plugin 'scrooloose/nerdtree'
+"-IDE features
+"Plugin 'Lokaltog/vim-powerline'                              "  The ultimate vim statusline utility.
+Plugin 'scrooloose/nerdtree'                                  "  A tree explorer plugin for vim.
 Plugin 'majutsushi/tagbar'
-"Plugin 'humiaozuzu/TabBar'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic'
-"Plugin 'Lokaltog/vim-powerline'
-Plugin 'bling/vim-airline'
-Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'kien/ctrlp.vim'                                       "  Fuzzy file, buffer, mru, tag, etc finder.
+Plugin 'tpope/vim-fugitive'                                   "  A git wrapper so awesome, it should be illegal.
+Plugin 'scrooloose/syntastic'                                 "  Syntax checking hacks for vim.
+Plugin 'bling/vim-airline'                                    "  Lean & mean status/tabline for vim that's light as air.
+Plugin 'vim-airline/vim-airline-themes'                       "  A collection of themes for vim-airline.
+Plugin 'bronson/vim-trailing-whitespace'                      "  Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
 
-" Gits
-"Plugin 'airblade/vim-gitgutter'
-Plugin 'gregsexton/gitv'
+"-Gits
+"Plugin 'airblade/vim-gitgutter'                              "  Shows a git diff in the gutter (sign column) and stages/undoes hunks.
+"Plugin 'gregsexton/gitv'                                     "  Gitk for Vim. http://www.gregsexton.org/portfolio/gitv/
 
-" Color scheme
-Plugin 'flazz/vim-colorschemes'
+"-Color scheme
+Plugin 'flazz/vim-colorschemes'                               "  One colorscheme pack to rule them all!
+Plugin 'vim-scripts/phd'                                      "  Color theme with dark blue background for coding.
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
 
-" Python
-"Plugin 'davidhalter/jedi-vim'
+"-C/C++
+Plugin 'derekwyatt/vim-protodef'                              "  Vim plugin for pulling in C++ function prototypes into implementation files.
+Plugin 'octol/vim-cpp-enhanced-highlight'                     "  Additional Vim syntax highlighting for C++ (including C++11/14).
 
-" Lua
-Plugin 'xolox/vim-misc'                                                     " required by lua.vim
-Plugin 'xolox/vim-lua-ftplugin'                                             " Lua file type plug-in for the Vim text editor
+"-Python
+"Plugin 'davidhalter/jedi-vim'                                "  Using the jedi autocompletion library for VIM.
+Plugin 'nvie/vim-flake8'
 
-" Javascript
-Plugin 'marijnh/tern_for_vim'
-Plugin 'jelera/vim-javascript-syntax'
-" Plugin 'nono/jquery.vim'
+"-Lua
+Plugin 'xolox/vim-misc'                                       "  required by lua.vim.
+Plugin 'xolox/vim-lua-ftplugin'                               "  Lua file type plug-in for the Vim text editor.
 
-" Actionscript
+"-Javascript
+"Plugin 'ternjs/tern_for_vim'                                 "  Tern plugin for Vim.
+"Plugin 'jelera/vim-javascript-syntax'                        "  Enhanced javascript syntax file for Vim.
+"Plugin 'nono/jquery.vim'                                     "  Syntax file for jQuery in ViM.
+Plugin 'pangloss/vim-javascript'                              "  JavaScript bundle for vim, this bundle provides syntax highlighting and improved indentation.
+
+"-Actionscript3
 Plugin 'keyhom/vim-as3'
 
-" Html5
-Plugin 'othree/html5.vim'
+"-Html5
+"Plugin 'othree/html5.vim'                                    "  HTML5 omnicomplete and syntax.
 
-" Json
-Plugin 'elzr/vim-json'
+"-Json
+Plugin 'elzr/vim-json'                                        "  A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing. Pathogen-friendly.
 
-" Less
-Plugin 'groenewege/vim-less'
+"-Less
+Plugin 'groenewege/vim-less'                                  "  Vim syntax for LESS (dynamic CSS).
 
-" GLSL
-Plugin 'tikhomirov/vim-glsl'
+"-GLSL
+Plugin 'tikhomirov/vim-glsl'                                  "  Vim runtime files for OpenGL Shading Language.
 
-" CMake
-" Plugin 'jalcine/cmake.vim'
+"-CMake
+"Plugin 'jalcine/cmake.vim'                                   "  CMake functionality within Vim.
 
-" Other utils
-Plugin 'xolox/vim-shell'
-Plugin 'xolox/vim-reload'
-Plugin 'vim-scripts/a.vim'
+"-Markdown
+Plugin 'iamcco/markdown-preview.vim'
+
+"-LLVM
+Plugin 'vim-llvm'
+
+"-Other utils
+Plugin 'xolox/vim-shell'                                      "  Improved integration between Vim and its environment.
+Plugin 'xolox/vim-reload'                                     "  Automatic reloading of Vim scripts ((file-type) plug-ins, auto-load/syntax/indent scripts, color schemes).
+Plugin 'Shougo/vimshell.vim'                                  "  Powerful shell implemented by vim.
+Plugin 'vim-scripts/a.vim'                                    "  Alternate Files quickly (.c --> .h etc).
+Plugin 'gcmt/wildfire.vim'                                    "  Smart selection of the closest text object.
+Plugin 'fholgado/minibufexpl.vim'                             "  Elegant buffer explorer.
+Plugin 'vim-scripts/DrawIt'                                   "  Ascii drawing plugin: lines, ellipses, arrows, fills.
+Plugin 'dyng/ctrlsf.vim'                                      "  An ack.vim alternative mimics Ctrl-Shift-F on Sublime Text 2.
+Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines' "  Easily Highlight Lines with Marks, and Add/Remove Marks
+Plugin 'kshenoy/vim-signature'                                "  Plugin to toggle, display and navigate marks.
+Plugin 'derekwyatt/vim-fswitch'                               "  Vim plug for switching between companion source files (e.g. .h and .cpp)
 
 call vundle#end()
 " }}}
@@ -237,7 +261,9 @@ nmap <silent> <leader>ss :setlocal spell!<cr>
 " Toggle paste mode
 nmap <silent> <leader><leader>p :setlocal paste!<cr>
 " Fast quit file
-nmap <silent> <leader>q :q<cr>
+nmap <silent> <leader><leader>q :q<cr>
+" Fast write file
+nmap <silent> <leader><leader>w :w<cr>
 " Remove the windows ^M - when the encodings gets messed up.
 noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
@@ -285,6 +311,9 @@ augroup FileTypeEx
   autocmd BufNewFile,BufRead *.vm setf vm
   autocmd BufNewFile,BufRead *.properties setf properties
   autocmd BufNewFile,BufRead *.mxml setf mxml
+  autocmd BufNewFile,BufRead *.ejs setf html
+  autocmd! BufRead,BufNewFile *.ll set filetype=llvm
+  autocmd! BufRead,BufNewFile *.td set filetype=tablegen
   autocmd! BufNewFile,BufRead,BufWritePost *vimrc setf vim
 augroup END
 " }}}
@@ -456,7 +485,7 @@ endif
 " unicode symbols
 let g:airline_left_sep = ''
 " let g:airline_left_sep = '»'
-" let g:airline_left_sep = '▶'
+let g:airline_left_sep = '▶'
 " let g:airline_left_sep = '⮀'
 " let g:airline_right_sep = '«'
 let g:airline_right_sep = '◀'
@@ -478,16 +507,28 @@ let g:lua_complete_omni=1
 let g:lua_internal=0
 let g:lua_compiler_name="luajit"
 
-let g:indentLine_enabled=0
-let g:indentLine_char='.'
+let g:indentLine_enabled=1
+let g:indentLine_char='¦'
+let g:indentLine_first_char='¦'
 " let g:indentLine_char = '┊'
-let g:indentLine_color_term = 239
-let g:indentLine_color_gui = '#A4E57E'
-let g:indentLine_color_tty_light = 7
-let g:indentLine_color_tty_dark = 1
+" let g:indentLine_color_term = 239
+" let g:indentLine_color_gui = '#A4E57E'
+let g:indentLine_color_tty_light = 4
+let g:indentLine_color_tty_dark = 2
+let g:indentLine_faster = 1
+let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_leadingSpaceEnabled = 0
 
 " remove whitespace on save
 "autocmd BufWritePre * :FixWhitespace
+
+" YCM and UltiSnips key conflicts process.
+let g:UltiSnipsExpandTrigger = '<c-tab>'
+" let g:UltiSnipsListSnippets = '<c-e>'
+let g:UltiSnipsJumpForwardTrigger = '<c-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
+let g:ycm_key_list_select_completion = ['<c-n>', '<Down>', '<Tab>']
+let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>', '<c-Tab>']
 
 " }}}
 
@@ -524,5 +565,5 @@ if has('gui_running')
 endif
 " }}}
 
-" vi:ft=vim fdm=manual sw=2 ts=2
+" vi:ft=vim fdm=manual sw=2 ts=2 tw=0 expandtab
 
