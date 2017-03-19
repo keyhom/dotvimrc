@@ -95,7 +95,7 @@ Plugin 'tikhomirov/vim-glsl'                                  "  Vim runtime fil
 Plugin 'iamcco/markdown-preview.vim'
 
 "-LLVM
-Plugin 'vim-llvm'
+Plugin 'vim-llvm', {'rtp': 'vim-llvm'}
 
 "-Other utils
 Plugin 'xolox/vim-shell'                                      "  Improved integration between Vim and its environment.
@@ -381,8 +381,9 @@ if executable('coffeetags')
         \ 'o' : 'object',
         \ }
         \ }
+endif
 
-  let g:tagbar_type_markdown = {
+let g:tagbar_type_markdown = {
     \ 'ctagstype' : 'markdown',
     \ 'sort' : 0,
     \ 'kinds' : [
@@ -390,24 +391,23 @@ if executable('coffeetags')
     \ ]
     \ }
 
-  let g:tagbar_type_as3 = {
-              \ 'ctagstype' : 'as3',
-              \ 'sort' : 0,
-              \ 'kinds' : [
-              \     'c:class',
-              \     'i:interface',
-              \     'n:namespace',
-              \     'S:static constant',
-              \     'V:static variable',
-              \     'P:static property',
-              \     'F:static function',
-              \     's:constant',
-              \     'v:variable',
-              \     'p:property',
-              \     'f:function'
-              \ ]
-              \ }
-endif
+let g:tagbar_type_as3 = {
+    \ 'ctagstype' : 'as3',
+    \ 'sort' : 0,
+    \ 'kinds' : [
+    \     'c:class',
+    \     'i:interface',
+    \     'n:namespace',
+    \     'S:static constant',
+    \     'V:static variable',
+    \     'P:static property',
+    \     'F:static function',
+    \     's:constant',
+    \     'v:variable',
+    \     'p:property',
+    \     'f:function'
+    \ ]
+    \ }
 
 " Nerd Tree
 let NERDChristmasTree=0
@@ -445,6 +445,8 @@ let g:ycm_complete_in_comments = 1 " default is 0.
 let g:ycm_server_log_level = 'warning'
 let g:ycm_autoclose_preview_window_after_insertion = 1 " default is 0
 
+nmap <F12> :YcmCompleter GoTo<cr>
+
 " }}}
 
 " ctrlp
@@ -455,12 +457,18 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
+let g:ctrlp_working_path_mode=''
+let g:ctrlp_follow_symlinks=1
+" let g:ctrlp_match_window_reversed=0
+let g:ctrlp_max_height=15
+let g:ctrlp_mruf_max=500
+
 " Keybindings for plugin toggle
 "nnoremap <F2> :set invpaste paste?<CR>
 "set pastetoggle=<F2>
 nmap <F9> :TagbarToggle<cr>
 nmap <F8> :NERDTreeToggle<cr>
-"nmap <F3> :GundoToggle<cr>
+nmap <F3> :GundoToggle<cr>
 nmap <leader>l :IndentLinesToggle<cr>
 nmap <leader><cr> :nohl<cr>
 "nmap  <D-/> :
