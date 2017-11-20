@@ -95,7 +95,7 @@ Plugin 'tikhomirov/vim-glsl'                                  "  Vim runtime fil
 Plugin 'iamcco/markdown-preview.vim'
 
 "-LLVM
-Plugin 'vim-llvm', {'rtp': 'vim-llvm'}
+Plugin 'vim-llvm'
 
 "-Other utils
 Plugin 'xolox/vim-shell'                                      "  Improved integration between Vim and its environment.
@@ -145,9 +145,11 @@ filetype plugin indent on
 syntax on
 
 " color scheme
-set background=dark
+" set background=dark
 let g:solarized_termcolors = 256 " fixed in terminal
-colo solarized
+" colo solarized
+colo default
+set bg=
 
 " highlight current line
 " au WinLeave * set nocursorline nocursorcolumn
@@ -184,7 +186,7 @@ set matchtime=2                                 " Show matching bracket for 0.2 
 "set matchpairs+=<:>                             " Specially for HTML
 set relativenumber
 set autoread                                    " Set to auto read when a file is changed from the system
-"set wildmenu                                   " Turn on wild menu
+set wildmenu                                   " Turn on wild menu
 set ruler                                       " Always show current position
 set cmdheight=2                                 " Set 2 lines command bar
 set hidden                                      " Change buffer - without saving
@@ -192,7 +194,8 @@ set nolazyredraw                                " Don't redraw while executing m
 "set magic                                       " Set magic on, for regular expressions
 set noerrorbells                                " No sound on errors
 set novisualbell
-"set t_vb=
+set vb t_vb=
+au GuiEnter * set t_vb=
 "set timeoutlen=500
 set modeline                                    " Enable the modeline
 
@@ -312,8 +315,9 @@ augroup FileTypeEx
   autocmd BufNewFile,BufRead *.properties setf properties
   autocmd BufNewFile,BufRead *.mxml setf mxml
   autocmd BufNewFile,BufRead *.ejs setf html
-  autocmd! BufRead,BufNewFile *.ll set filetype=llvm
-  autocmd! BufRead,BufNewFile *.td set filetype=tablegen
+  autocmd BufNewFile,BufRead *.glsllib setf glsl
+  " autocmd! BufRead,BufNewFile *.ll set filetype=llvm
+  " autocmd! BufRead,BufNewFile *.td set filetype=tablegen
   autocmd! BufNewFile,BufRead,BufWritePost *vimrc setf vim
 augroup END
 " }}}
@@ -422,6 +426,9 @@ let NERDTreeWinPos = "left"
 let NERDSpaceDelims=1
 " nmap <D-/> :NERDComToggleComment<cr>
 let NERDCompactSexyComs=1
+let g:NERDCustomDelimiters = {
+      \ 'as3': { 'left' : '//', 'leftAlt': '/*', 'rightAlt': '*/' }
+      \ }
 
 " ZenCoding
 "let g:user_emmet_expandabbr_key='<C-j>'
@@ -556,8 +563,8 @@ if has('gui_running')
   set guioptions-=e
   "set transparency=30
   set showtabline=2
-  set columns=160
-  set lines=40
+  set columns=120
+  set lines=60
   noremap <D-M-left> :tabprevious<cr>
   noremap <D-M-right> :tabnext<cr>
   map <D-1> 1gt
