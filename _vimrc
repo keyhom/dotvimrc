@@ -30,6 +30,7 @@ Plugin 'sjl/gundo.vim'                                        "  Visualize your 
 Plugin 'godlygeek/tabular'                                    "  Vim script for text filtering and alignment.
 Plugin 'Yggdroot/indentLine'                                  "  display the indention levels with thin vertical lines.
 Plugin 'terryma/vim-multiple-cursors'                         "  True Sublime Text style multiple selections for Vim.
+Plugin 'justinmk/vim-sneak'                                   "  The missing motion for Vim http://www.vim.org/scripts/script.php?script_id=4809
 
 "-Fast navigations
 Plugin 'Lokaltog/vim-easymotion'                              "  Vim motion on speed!
@@ -44,6 +45,8 @@ Plugin 'scrooloose/syntastic'                                 "  Syntax checking
 Plugin 'bling/vim-airline'                                    "  Lean & mean status/tabline for vim that's light as air.
 Plugin 'vim-airline/vim-airline-themes'                       "  A collection of themes for vim-airline.
 Plugin 'bronson/vim-trailing-whitespace'                      "  Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
+Plugin 'mhinz/vim-signify'                                    "  Show a diff using Vim its sign column
+Plugin 'tpope/vim-sleuth'                                     "  sleuth.vim: Heuristically set buffer options, auto shiftwidth, expandtab, etc.
 
 "-Gits
 "Plugin 'airblade/vim-gitgutter'                              "  Shows a git diff in the gutter (sign column) and stages/undoes hunks.
@@ -92,6 +95,7 @@ Plugin 'tikhomirov/vim-glsl'                                  "  Vim runtime fil
 "Plugin 'jalcine/cmake.vim'                                   "  CMake functionality within Vim.
 
 "-Markdown
+Plugin 'plasticboy/vim-markdown'                              "  Markdown Vim Mode http://plasticboy.com/markdown-vim-mode/
 Plugin 'iamcco/markdown-preview.vim'
 
 "-LLVM
@@ -109,6 +113,7 @@ Plugin 'dyng/ctrlsf.vim'                                      "  An ack.vim alte
 Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines' "  Easily Highlight Lines with Marks, and Add/Remove Marks
 Plugin 'kshenoy/vim-signature'                                "  Plugin to toggle, display and navigate marks.
 Plugin 'derekwyatt/vim-fswitch'                               "  Vim plug for switching between companion source files (e.g. .h and .cpp)
+Plugin 'tyru/open-browser.vim'                                "  Open URI with your favorite browser from your most favorite editor
 
 call vundle#end()
 " }}}
