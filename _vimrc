@@ -114,6 +114,7 @@ Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines' "  Easily Highligh
 Plugin 'kshenoy/vim-signature'                                "  Plugin to toggle, display and navigate marks.
 Plugin 'derekwyatt/vim-fswitch'                               "  Vim plug for switching between companion source files (e.g. .h and .cpp)
 Plugin 'tyru/open-browser.vim'                                "  Open URI with your favorite browser from your most favorite editor
+Plugin 'http://git.oschina.net/qiuchangjie/ShaderHighLight'   "  Unity shader highlight, glsl/hlsl/cg.
 
 call vundle#end()
 " }}}
