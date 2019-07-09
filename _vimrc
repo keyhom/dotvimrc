@@ -115,6 +115,7 @@ Plugin 'kshenoy/vim-signature'                                "  Plugin to toggl
 Plugin 'derekwyatt/vim-fswitch'                               "  Vim plug for switching between companion source files (e.g. .h and .cpp)
 Plugin 'tyru/open-browser.vim'                                "  Open URI with your favorite browser from your most favorite editor
 Plugin 'http://git.oschina.net/qiuchangjie/ShaderHighLight'   "  Unity shader highlight, glsl/hlsl/cg.
+Plugin 'chxuan/change-colorscheme'                            "  Random changing the colorscheme support.
 
 call vundle#end()
 " }}}
@@ -152,10 +153,10 @@ syntax on
 
 " color scheme
 " set background=dark
-let g:solarized_termcolors = 256 " fixed in terminal
 " colo solarized
-colo default
 set bg=
+colo default
+" let g:solarized_termcolors = 256 " fixed in terminal
 
 " highlight current line
 " au WinLeave * set nocursorline nocursorcolumn
@@ -178,7 +179,7 @@ set nofoldenable                                " disable folding
 set confirm                                     " prompt when existing from an unsaved file
 set backspace=indent,eol,start                  " More powerful backspacing
 set whichwrap+=<,>,h,l
-set t_Co=256                                    " Explicity tell vim that the terminal has 256 colors
+" set t_Co=256                                    " Explicity tell vim that the terminal has 256 colors
 set mouse=a                                     " Use mouse in all modes
 set report=0                                    " Always report number of lines changed
 set nowrap                                      " Don't wrap lines
@@ -196,7 +197,7 @@ set wildmenu                                   " Turn on wild menu
 set ruler                                       " Always show current position
 set cmdheight=2                                 " Set 2 lines command bar
 set hidden                                      " Change buffer - without saving
-set nolazyredraw                                " Don't redraw while executing macros
+"set nolazyredraw                                " Don't redraw while executing macros
 "set magic                                       " Set magic on, for regular expressions
 set noerrorbells                                " No sound on errors
 set novisualbell
@@ -433,7 +434,11 @@ let NERDSpaceDelims=1
 " nmap <D-/> :NERDComToggleComment<cr>
 let NERDCompactSexyComs=1
 let g:NERDCustomDelimiters = {
-      \ 'as3': { 'left' : '//', 'leftAlt': '/*', 'rightAlt': '*/' }
+      \ 'as3': { 'left' : '//', 'leftAlt': '/*', 'rightAlt': '*/' },
+      \ 'shaderlab': { 'left' : '//', 'leftAlt': '/*', 'rightAlt': '*/' },
+      \ 'cg': { 'left' : '//', 'leftAlt': '/*', 'rightAlt': '*/' },
+      \ 'glsl': { 'left' : '//', 'leftAlt': '/*', 'rightAlt': '*/' },
+      \ 'hlsl': { 'left' : '//', 'leftAlt': '/*', 'rightAlt': '*/' },
       \ }
 
 " ZenCoding
@@ -452,13 +457,16 @@ let g:ycm_filetype_specific_completion_to_disable = {
             \ 'gitcommit' : 1
             \ }
 
-let g:ycm_error_symbol = '>>'
-let g:ycm_warning_symbol = '>='
-let g:ycm_complete_in_comments = 1 " default is 0.
+" let g:ycm_error_symbol = '!E'
+" let g:ycm_warning_symbol = '!W'
+" let g:ycm_complete_in_comments = 1 " default is 0.
 let g:ycm_server_log_level = 'warning'
-let g:ycm_autoclose_preview_window_after_insertion = 1 " default is 0
+" let g:ycm_autoclose_preview_window_after_insertion = 1 " default is 0
 
-nmap <F12> :YcmCompleter GoTo<cr>
+nnoremap <F12> :YcmCompleter GoTo<cr>
+nnoremap <M-F1> :YcmCompleter FixIt<cr>
+nnoremap <M-CR> :YcmCompleter FixIt<cr>
+nnoremap <M-F3> :YcmCompleter GetDoc<cr>
 
 " }}}
 
@@ -485,14 +493,17 @@ nmap <F3> :GundoToggle<cr>
 nmap <leader>l :IndentLinesToggle<cr>
 nmap <leader><cr> :nohl<cr>
 "nmap  <D-/> :
+vnoremap <leader>y "+y
+vnoremap <leader>p "+p
+nnoremap <leader>p "+p
 nnoremap <leader>a :Ack
 
 " powerline
 set fillchars+=stl:\ ,stlnc:\ 
 let g:Powerline_symbols = 'fancy'
 " airline
-"let g:airline_section_b = '${strftime("%c")}'
-"let g:airline_section_y = ' BN: %{bufnr("%")}'
+" let g:airline_section_b = '${strftime("%c")}'
+" let g:airline_section_y = ' BN: %{bufnr("%")}'
 let g:airline#extensions#tabline#enabled=1
 "let g:airline#extensions#tabline#left_sep = '⮀'
 "let g:airline#extensions#tabline#left_alt_sep = '⮁'
@@ -504,22 +515,50 @@ if !exists('g:airline_symbols')
 endif
 
 " unicode symbols
-let g:airline_left_sep = ''
+
+" unicode symbols
 " let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
-" let g:airline_left_sep = '⮀'
 " let g:airline_right_sep = '«'
 let g:airline_right_sep = '◀'
-" let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+" let g:airline_symbols.linenr = '☰'
 " let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.linenr = '␤'
 " let g:airline_symbols.linenr = '¶'
-" let g:airline_symbols.linenr = 'LN'
+" let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = '㏑'
 let g:airline_symbols.branch = '⎇'
 " let g:airline_symbols.paste = 'ρ'
 " let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
 let g:airline_symbols.paste = '[PASTE]'
+" let g:airline_symbols.spell = 'Ꞩ'
+" let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.whitespace = 'Ξ'
+
+" powerline symbols
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+" let g:airline_symbols.branch = ''
+" let g:airline_symbols.readonly = ''
+" let g:airline_symbols.linenr = '☰'
+" let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.dirty='⚡'
+
+" old vim-powerline symbols
+" let g:airline_left_sep = '⮀'
+" let g:airline_left_alt_sep = '⮁'
+" let g:airline_right_sep = '⮂'
+" let g:airline_right_alt_sep = '⮃'
+" let g:airline_symbols.branch = '⭠'
+" let g:airline_symbols.readonly = '⭤'
+" let g:airline_symbols.linenr = '⭡'
+
+" let g:airline_powerline_fonts = 1
+let g:airline_exclude_preview = 1
 
 " Conflicts fixed
 " Lua supported
