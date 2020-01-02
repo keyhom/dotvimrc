@@ -55,7 +55,7 @@ Plug 'Lokaltog/vim-easymotion'
 " The ultimate vim statusline utility.
 "Plug 'Lokaltog/vim-powerline'
 " A tree explorer plugin for vim.
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToogle' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 " Fuzzy file, buffer, mru, tag, etc finder.
 Plug 'kien/ctrlp.vim'
@@ -216,9 +216,9 @@ syntax on
 " color scheme
 " set background=dark
 " colo solarized
-set bg=
 colo default
-" let g:solarized_termcolors = 256 " fixed in terminal
+set bg=
+let g:solarized_termcolors = 256 " fixed in terminal
 
 " highlight current line
 " au WinLeave * set nocursorline nocursorcolumn
@@ -333,9 +333,9 @@ nmap <silent> <leader>ss :setlocal spell!<cr>
 " Toggle paste mode
 nmap <silent> <leader><leader>p :setlocal paste!<cr>
 " Fast quit file
-nmap <silent> <leader><leader>q :q<cr>
+nmap <silent> <leader><space>q :q<cr>
 " Fast write file
-nmap <silent> <leader><leader>w :w<cr>
+nmap <silent> <leader><space>w :w<cr>
 " Remove the windows ^M - when the encodings gets messed up.
 noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
@@ -535,7 +535,7 @@ nnoremap <M-F3> :YcmCompleter GetDoc<cr>
 " ctrlp
 set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store,*/proj.*/*  " MacOSX/Linux
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)$|proj\.\v$)',
+  \ 'dir':  '\v[\/](\.(git|hg|svn)$|proj\.\v$|node_modules)',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
@@ -552,7 +552,7 @@ let g:ctrlp_mruf_max=500
 nmap <F9> :TagbarToggle<cr>
 nmap <F8> :NERDTreeToggle<cr>
 nmap <F3> :GundoToggle<cr>
-nmap <leader>l :IndentLinesToggle<cr>
+" nmap <leader>l :IndentLinesToggle<cr>
 nmap <leader><cr> :nohl<cr>
 "nmap  <D-/> :
 vnoremap <leader>y "+y
