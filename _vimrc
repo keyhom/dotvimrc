@@ -14,8 +14,10 @@ call plug#begin('~/.vim/plugged')
 "-Code completions
 " A code-completion engine for Vim.
 Plug 'ycm-core/YouCompleteMe'
+" some language servers
+Plug 'ycm-core/lsp-examples'
 " Generates config files for YouCompleteMe.
-Plug 'rdnetto/Ycm-Generator', { 'on': 'YcmGenerateConfig' }
+" Plug 'rdnetto/Ycm-Generator', { 'on': 'YcmGenerateConfig' }
 " ZenCoding.
 Plug 'mattn/emmet-vim'
 " provides insert mode auto-completion for quotes, parens, brackets, etc.
@@ -68,7 +70,7 @@ Plug 'bling/vim-airline'
 " A collection of themes for vim-airline.
 Plug 'vim-airline/vim-airline-themes'
 " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
-Plug 'bronson/vim-trailing-whitespace'
+" Plug 'bronson/vim-trailing-whitespace'
 " Show a diff using Vim its sign column
 Plug 'mhinz/vim-signify'
 " sleuth.vim: Heuristically set buffer options, auto shiftwidth, expandtab, etc.
@@ -103,7 +105,7 @@ Plug 'nvie/vim-flake8'
 " required by lua.vim.
 Plug 'xolox/vim-misc'
 " Lua file type plug-in for the Vim text editor.
-Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
+" Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
 
 "-Javascript
 " Tern plugin for Vim.
@@ -113,13 +115,13 @@ Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
 " Syntax file for jQuery in ViM.
 "Plug 'nono/jquery.vim'
 " JavaScript bundle for vim, this bundle provides syntax highlighting and improved indentation.
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+" Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 
 "-Typescript
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+" Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 
 "-Actionscript3
-Plug 'keyhom/vim-as3', { 'for': ['actionscript3', 'as3'] }
+" Plug 'keyhom/vim-as3', { 'for': ['actionscript3', 'as3'] }
 
 "-Html5
 " HTML5 omnicomplete and syntax.
@@ -147,7 +149,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'iamcco/markdown-preview.vim', { 'for': 'markdown' }
 
 "-LLVM
-Plug 'keyhom/vim-llvm'
+" Plug 'keyhom/vim-llvm'
 
 "-Other utils
 " Improved integration between Vim and its environment.
@@ -366,7 +368,7 @@ cno <C-P> <Up>
 cno <C-N> <Down>
 
 " Parenthesis Or Bracket Expanding.
-ino {<cr> {<esc>o}<esc>O
+" ino {<cr> {<esc>o}<esc>O
 
 " }}}
 
@@ -625,9 +627,9 @@ let g:airline_exclude_preview = 1
 " Conflicts fixed
 " Lua supported
 
-let g:lua_complete_omni=1
-let g:lua_internal=0
-let g:lua_compiler_name="luajit"
+" let g:lua_complete_omni=1
+" let g:lua_internal=0
+" let g:lua_compiler_name="luajit"
 
 let g:indentLine_enabled=1
 let g:indentLine_char='¦'
@@ -645,13 +647,13 @@ let g:indentLine_leadingSpaceEnabled = 0
 "autocmd BufWritePre * :FixWhitespace
 
 " YCM and UltiSnips key conflicts process.
-let g:UltiSnipsExpandTrigger = '<c-tab>'
-" let g:UltiSnipsListSnippets = '<c-e>'
+let g:ycm_use_ultisnips_completer = 1
+let g:UltiSnipsExpandTrigger = '<Enter>'
+let g:UltiSnipsListSnippets = '<C-TAB>'
 let g:UltiSnipsJumpForwardTrigger = '<c-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
-let g:ycm_key_list_select_completion = ['<c-n>', '<Down>', '<Tab>']
-let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>', '<c-Tab>']
-
+let g:ycm_key_list_select_completion = ['<c-n>', '<TAB>', '<Down>' ]
+let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
 " }}}
 
 " For GVIM/MACVIM {{{
@@ -686,6 +688,7 @@ if has('gui_running')
   map <D-0> :tablast<cr>
 endif
 " }}}
+
 
 " vi:ft=vim fdm=manual sw=2 ts=2 tw=0 expandtab
 

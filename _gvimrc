@@ -1,0 +1,34 @@
+set guioptions-=m
+set nu
+set relativenumber
+colo material
+set mouse=a
+if exists(':GuiFont')
+    GuiFont! Cascadia Code PL Semibold:h10.5
+else
+    set gfn=Cascadia_Code_PL_Semibold:h10:cANSI:qDRAFT
+endif
+
+" Disable Neovim Tabline
+if exists(':GuiTabline')
+    GuiTabline 0
+endif
+
+" Disable GUI Popupmenu
+if exists(':GuiPopupmenu')
+    GuiPopupmenu 0
+endif
+
+" Enable GUI scroll bar
+if exists(':GuiScrollBar')
+    GuiScrollBar 1
+endif
+
+" set colorcolumn=80
+set cursorline
+set cursorcolumn
+
+" highlight CursorLine ctermbg=236 guibg=#222E30 guisp=#222E30
+highlight ColorColumn ctermbg=236 guibg=#222E30 guisp=#222E30
+
+source ~/.vim/plugged/lsp-examples/vimrc.generated
