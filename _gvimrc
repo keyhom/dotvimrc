@@ -4,9 +4,11 @@ set relativenumber
 colo material
 set mouse=a
 if exists(':GuiFont')
-    GuiFont! Cascadia Code PL Semibold:h10.5
+    GuiFont! Cascadia Code PL Semibold:h11
+elseif exists('g:neovide')
+    set gfn=Cascadia_Code_PL:h13
 else
-    set gfn=Cascadia_Code_PL_Semibold:h10:cANSI:qDRAFT
+    set gfn=Cascadia_Code_PL:h11:cANSI:qDRAFT
 endif
 
 " Disable Neovim Tabline
@@ -30,5 +32,3 @@ set cursorcolumn
 
 " highlight CursorLine ctermbg=236 guibg=#222E30 guisp=#222E30
 highlight ColorColumn ctermbg=236 guibg=#222E30 guisp=#222E30
-
-source ~/.vim/plugged/lsp-examples/vimrc.generated

@@ -368,7 +368,7 @@ cno <C-P> <Up>
 cno <C-N> <Down>
 
 " Parenthesis Or Bracket Expanding.
-" ino {<cr> {<esc>o}<esc>O
+ino {<cr> {<esc>o}<esc>O
 
 " }}}
 
@@ -689,6 +689,9 @@ if has('gui_running')
 endif
 " }}}
 
+let g:python3_host_prog="/usr/local/bin/python3"
+
+source ~/.vim/plugged/lsp-examples/vimrc.generated
 
 " vi:ft=vim fdm=manual sw=2 ts=2 tw=0 expandtab
 
