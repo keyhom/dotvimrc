@@ -525,7 +525,8 @@ let g:ycm_filetype_specific_completion_to_disable = {
 " let g:ycm_warning_symbol = '!W'
 " let g:ycm_complete_in_comments = 1 " default is 0.
 let g:ycm_server_log_level = 'warning'
-" let g:ycm_autoclose_preview_window_after_insertion = 1 " default is 0
+let g:ycm_add_preview_to_completeopt = 1 " default is 0
+let g:ycm_autoclose_preview_window_after_insertion = 1 " default is 0
 
 nnoremap <F12> :YcmCompleter GoTo<cr>
 nnoremap <M-F1> :YcmCompleter FixIt<cr>
@@ -561,6 +562,7 @@ vnoremap <leader>y "+y
 vnoremap <leader>p "+p
 nnoremap <leader>p "+p
 nnoremap <leader>a :Ack
+nmap <leader><space>p :CtrlP<cr>
 
 " powerline
 set fillchars+=stl:\ ,stlnc:\ 
@@ -689,9 +691,19 @@ if has('gui_running')
 endif
 " }}}
 
-let g:python3_host_prog="/usr/local/bin/python3"
-
 source ~/.vim/plugged/lsp-examples/vimrc.generated
+
+if has('unix')
+  let s:uname = system("echo -n \"$(uname)\"")
+  if !v:shell_error && s:uname == "Linux\n"
+    " Linux here.
+  elseif !v:shell_error && s:uname == "Darwin\n"
+    " Mac here.
+        let g:python3_host_prog="/usr/local/bin/python3"
+  endif
+elseif has('win32') || has('win64')
+    " Windows."
+endif
 
 " vi:ft=vim fdm=manual sw=2 ts=2 tw=0 expandtab
 
