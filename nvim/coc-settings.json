@@ -1,0 +1,6 @@
+{
+    "lua.enable": true,
+    "Lua.completion.enable": true,
+    "Lua.hint.enable": true,
+    "codeLens.enable": true
+}
