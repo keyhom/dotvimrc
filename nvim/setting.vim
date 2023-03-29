@@ -25,17 +25,12 @@ function! CommonSetup()
     set showcmd
     set title
     set laststatus=2
-    set t_ut=
     set noerrorbells
     set novisualbell
-    set vb t_vb=
-    au GuiEnter * set t_vb=
-    set nocompatible
     set matchtime=2
     set backspace=2
     set autoread
     set ruler
-    set t_Co=256
     set mouse=a
     set cmdheight=2
     set hidden
@@ -51,13 +46,18 @@ function! CommonSetup()
     if !s:is_neovim
         set ttymouse=sgr
         set balloondelay=250
+        set t_ut=
+        set vb t_vb=
+        au GuiEnter * set t_vb=
+        set nocompatible
+        set t_Co=256
     endif
     if has("patch-8.1.1904")
         set completeopt+=popup
         set completepopup=align:menu,border:off,hightlight:Pmenu
     endif
     " don't give |ins-completion-menu| messages.
-    "set shortmess+=c
+    set shortmess+=c
     set bg=
 endfunction
 
@@ -161,6 +161,56 @@ function! AirLineSetup()
     let g:airline_section_c = '%F'
     "let g:airline_symbols.dirty='⚡'
     let g:airline#extensions#tabline#enabled=1
+
+    set fillchars+=stl:\ ,stlnc:\ 
+
+    if !exists('g:airline_symbols')
+      let g:airline_symbols = {}
+    endif
+
+    " unicode symbols
+    " let g:airline_left_sep = '»'
+    let g:airline_left_sep = '▶'
+    " let g:airline_right_sep = '«'
+    let g:airline_right_sep = '◀'
+    let g:airline_symbols.crypt = '🔒'
+    " let g:airline_symbols.linenr = '☰'
+    " let g:airline_symbols.linenr = '␊'
+    let g:airline_symbols.linenr = '␤'
+    " let g:airline_symbols.linenr = '¶'
+    " let g:airline_symbols.maxlinenr = ''
+    let g:airline_symbols.maxlinenr = '㏑'
+    let g:airline_symbols.branch = '⎇'
+    " let g:airline_symbols.paste = 'ρ'
+    " let g:airline_symbols.paste = 'Þ'
+    " let g:airline_symbols.paste = '∥'
+    let g:airline_symbols.paste = '[PASTE]'
+    " let g:airline_symbols.spell = 'Ꞩ'
+    " let g:airline_symbols.notexists = 'Ɇ'
+    let g:airline_symbols.whitespace = 'Ξ'
+
+    " powerline symbols
+    " let g:airline_left_sep = ''
+    " let g:airline_left_alt_sep = ''
+    " let g:airline_right_sep = ''
+    " let g:airline_right_alt_sep = ''
+    " let g:airline_symbols.branch = ''
+    " let g:airline_symbols.readonly = ''
+    " let g:airline_symbols.linenr = '☰'
+    " let g:airline_symbols.maxlinenr = ''
+    let g:airline_symbols.dirty='⚡'
+
+    " old vim-powerline symbols
+    " let g:airline_left_sep = '⮀'
+    " let g:airline_left_alt_sep = '⮁'
+    " let g:airline_right_sep = '⮂'
+    " let g:airline_right_alt_sep = '⮃'
+    " let g:airline_symbols.branch = '⭠'
+    " let g:airline_symbols.readonly = '⭤'
+    " let g:airline_symbols.linenr = '⭡'
+
+    " let g:airline_powerline_fonts = 1
+    let g:airline_exclude_preview = 1
 endfunction
 
 function! CtrlPSetup()
@@ -184,6 +234,13 @@ function! OtherSetup()
     let g:UltiSnipsListSnippets = '<C-TAB>'
     let g:UltiSnipsJumpForwardTrigger = '<c-j>'
     let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
+
+    set cursorline
+    set cursorcolumn
+
+    if exists('g:neovide')
+        let g:neovide_cursor_vfx_mode = 'ripple'
+    endif
 endfunction
 
 function! IndentLineSetup()
@@ -214,6 +271,7 @@ call AirLineSetup()
 call EasyMotionSetup()
 call CtrlPSetup()
 call OtherSetup()
+call IndentLineSetup()
 call CocSetup()
 
 color material
