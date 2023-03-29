@@ -123,6 +123,8 @@ function! KeyMappingSetup()
     " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
     inoremap <silent><expr> <TAB>
           \ pumvisible() ? "\<C-y>" : "\<TAB>"
+    inoremap <silent><expr> <CR>
+          \ pumvisible() ? "\<C-y>" : "\<CR>"
     " Use <c-space> to trigger completion.
     inoremap <silent><expr> <c-space> coc#refresh()
     inoremap <S-CR> <ESC>o
@@ -260,7 +262,7 @@ function! IndentLineSetup()
 endfunction
 
 function! CocSetup()
-    " let g:coc_global_extensions = ['coc-json', 'coc-git']
+    let g:coc_global_extensions = ['coc-tsserver', 'coc-clangd', 'coc-html', 'coc-eslint', 'coc-yaml', 'coc-snippets', 'coc-css', 'coc-highlight', 'coc-vetur', 'coc-omnisharp', 'coc-sumneko-lua', 'coc-spell-checker']
     "inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 endfunction
 

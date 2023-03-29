@@ -11,6 +11,3 @@ exec 'source ' . fnamemodify(resolve(expand('<sfile>:p')), ':h') . '/setting.vim
 if exists('g:neovide')
     set guifont=Cascadia\ Code\ PL,SF\ Mono,Monaco,Menlo,Monospaced:h10
 endif
-
-set lines=50
-set columns=90

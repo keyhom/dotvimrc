@@ -46,24 +46,24 @@ Plug 'tpope/vim-fugitive'
 
 " Plug 'neoclide/coc.nvim' { 'branch': 'master', 'do': 'npm install --frozen-lockfile' }
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'neoclide/coc-tsserver', { 'do': 'npm install --frozen-lockfile' }
+"Plug 'neoclide/coc-tsserver', { 'do': 'npm install --frozen-lockfile' }
 Plug 'neoclide/coc-java', { 'do': 'npm install --frozen-lockfile' }
-Plug 'clangd/coc-clangd', { 'do': 'npm install --frozen-lockfile' }
-Plug 'neoclide/coc-html', { 'do': 'npm install --frozen-lockfile' }
-Plug 'neoclide/coc-eslint', { 'do': 'npm install --frozen-lockfile' }
-Plug 'neoclide/coc-yaml', { 'do': 'npm install --frozen-lockfile' }
+"Plug 'clangd/coc-clangd', { 'do': 'npm install --frozen-lockfile' }
+"Plug 'neoclide/coc-html', { 'do': 'npm install --frozen-lockfile' }
+"Plug 'neoclide/coc-eslint', { 'do': 'npm install --frozen-lockfile' }
+"Plug 'neoclide/coc-yaml', { 'do': 'npm install --frozen-lockfile' }
 Plug 'neoclide/coc-json', { 'do': 'npm install --frozen-lockfile' }
-Plug 'neoclide/coc-snippets', { 'do': 'npm install --frozen-lockfile' }
-Plug 'neoclide/coc-css', { 'do': 'npm install --frozen-lockfile' }
-Plug 'neoclide/coc-highlight', { 'do': 'npm install --frozen-lockfile' }
-Plug 'neoclide/coc-vetur', { 'do': 'npm install --frozen-lockfile' }
-Plug 'neoclide/coc-neco', { 'do': 'npm install --frozen-lockfile' }
+"Plug 'neoclide/coc-snippets', { 'do': 'npm install --frozen-lockfile' }
+"Plug 'neoclide/coc-css', { 'do': 'npm install --frozen-lockfile' }
+"Plug 'neoclide/coc-highlight', { 'do': 'npm install --frozen-lockfile' }
+"Plug 'neoclide/coc-vetur', { 'do': 'npm install --frozen-lockfile' }
+"Plug 'neoclide/coc-neco', { 'do': 'npm install --frozen-lockfile' }
 Plug 'iamcco/coc-vimlsp', { 'do': 'npm install --frozen-lockfile' }
-Plug 'yaegassy/coc-pylsp', {'do': 'npm install --frozen-lockfile' }
-Plug 'coc-extensions/coc-omnisharp', { 'do': 'npm install --frozen-lockfile' }
+"Plug 'yaegassy/coc-pylsp', {'do': 'npm install --frozen-lockfile' }
+"Plug 'coc-extensions/coc-omnisharp', { 'do': 'npm install --frozen-lockfile' }
 "Plug 'josa42/coc-lua', {'do': 'npm install --frozen-lockfile'}
 "Plug 'xiyaowong/coc-sumneko-lua', {'do': 'npm install --frozen-lockfile'}
-Plug 'iamcco/coc-spell-checker', { 'do': 'npm install --frozen-lockfile' }
+"Plug 'iamcco/coc-spell-checker', { 'do': 'npm install --frozen-lockfile' }
 Plug 'rafamadriz/friendly-snippets'
 
 
