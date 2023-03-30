@@ -43,6 +43,7 @@ function! CommonSetup()
     set noswapfile
     set history=1000
     set updatetime=500
+    set termguicolors     " enable true colors support
     if !s:is_neovim
         set ttymouse=sgr
         set balloondelay=250
@@ -162,7 +163,7 @@ function! AirLineSetup()
     " Set full path for vim-airline.
     let g:airline_section_c = '%F'
     "let g:airline_symbols.dirty='⚡'
-    let g:airline#extensions#tabline#enabled=1
+    "let g:airline#extensions#tabline#enabled=1
 
     set fillchars+=stl:\ ,stlnc:\ 
 
@@ -278,3 +279,4 @@ call CocSetup()
 
 color material
 
+" lua require("bufferline").setup{}

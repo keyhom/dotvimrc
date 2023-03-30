@@ -14,6 +14,8 @@ Plug 'tpope/vim-surround'
 " Fuzzy file, buffer, mru, tag, etc finder.
 Plug 'kien/ctrlp.vim'
 "Plug 'sheerun/vim-polyglot'
+Plug 'BurntSushi/ripgrep'
+Plug 'sharkdp/fd'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -21,6 +23,10 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'do': 'TSUpdate' }
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+Plug 'nvim-tree/nvim-web-devicons' " Recommended (for coloured icons)
+" Plug 'ryanoasis/vim-devicons' Icons without colours
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
 
 Plug 'iamcco/markdown-preview.nvim'
 Plug 'ferrine/md-img-paste.vim'
