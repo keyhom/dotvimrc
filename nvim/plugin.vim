@@ -26,7 +26,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'nvim-tree/nvim-web-devicons' " Recommended (for coloured icons)
 " Plug 'ryanoasis/vim-devicons' Icons without colours
-Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
+"Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
 
 Plug 'iamcco/markdown-preview.nvim'
 Plug 'ferrine/md-img-paste.vim'
@@ -49,6 +49,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'justinmk/vim-sneak'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-fugitive'
+"Plug 'luochen1990/rainbow'
 
 " Plug 'neoclide/coc.nvim' { 'branch': 'master', 'do': 'npm install --frozen-lockfile' }
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }

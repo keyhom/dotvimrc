@@ -44,6 +44,7 @@ function! CommonSetup()
     set history=1000
     set updatetime=500
     set termguicolors     " enable true colors support
+    set lazyredraw
     if !s:is_neovim
         set ttymouse=sgr
         set balloondelay=250
@@ -161,11 +162,51 @@ endfunction
 
 function! AirLineSetup()
     " Set full path for vim-airline.
-    let g:airline_section_c = '%F'
-    "let g:airline_symbols.dirty='⚡'
-    "let g:airline#extensions#tabline#enabled=1
+    "let g:airline_section_b = '%-0.10{getcwd()}'
+    "let g:airline_section_c = '%F'
+    let g:airline_section_c = '%t'
+    let g:airline_section_c_only_filename = 1
+    let g:airline_stl_path_style = 'short'
+    let g:airline_experimental = 1
+    let g:airline#extensions#tabline#enabled=1
+    let g:airline#extensions#tabline#left_alt_sep = '|'
+    let g:airline#extensions#tabline#buffer_nr_show = 0
+    let g:airline#extensions#tabline#formatter = 'default'
 
-    set fillchars+=stl:\ ,stlnc:\ 
+    let g:airline_theme = 'simple'
+
+    let g:airline#extensions#keymap#enabled = 1
+    let g:airline#extensions#tabline#buffer_idx_mode = 1
+    let g:airline#extensions#tabline#buffer_idx_format = {
+                \ '0': '0 ',
+                \ '1': '1 ',
+                \ '2': '2 ',
+                \ '3': '3 ',
+                \ '4': '4 ',
+                \ '5': '5 ',
+                \ '6': '6 ',
+                \ '7': '7 ',
+                \ '8': '8 ',
+                \ '9': '9 ',
+                \ }
+
+    nmap <leader>1 <Plug>AirlineSelectTab1
+    nmap <leader>2 <Plug>AirlineSelectTab2
+    nmap <leader>3 <Plug>AirlineSelectTab3
+    nmap <leader>4 <Plug>AirlineSelectTab4
+    nmap <leader>5 <Plug>AirlineSelectTab5
+    nmap <leader>6 <Plug>AirlineSelectTab6
+    nmap <leader>7 <Plug>AirlineSelectTab7
+    nmap <leader>8 <Plug>AirlineSelectTab8
+    nmap <leader>9 <Plug>AirlineSelectTab9
+    " 设置切换tab的快捷键 <\> + <-> 切换到前一个 tab
+    nmap <leader>- <Plug>AirlineSelectPrevTab
+    " 设置切换tab的快捷键 <\> + <+> 切换到后一个 tab
+    nmap <leader>+ <Plug>AirlineSelectNextTab
+    " 设置切换tab的快捷键 <\> + <q> 退出当前的 tab
+    nmap <leader>q :bp<cr>:bd #<cr>
+
+    "set fillchars+=stl:\ ,stlnc:\ 
 
     if !exists('g:airline_symbols')
       let g:airline_symbols = {}
@@ -177,19 +218,19 @@ function! AirLineSetup()
     " let g:airline_right_sep = '«'
     let g:airline_right_sep = '◀'
     let g:airline_symbols.crypt = '🔒'
-    " let g:airline_symbols.linenr = '☰'
+     "let g:airline_symbols.linenr = '☰'
     " let g:airline_symbols.linenr = '␊'
     let g:airline_symbols.linenr = '␤'
     " let g:airline_symbols.linenr = '¶'
     " let g:airline_symbols.maxlinenr = ''
     let g:airline_symbols.maxlinenr = '㏑'
     let g:airline_symbols.branch = '⎇'
-    " let g:airline_symbols.paste = 'ρ'
+     "let g:airline_symbols.paste = 'ρ'
     " let g:airline_symbols.paste = 'Þ'
     " let g:airline_symbols.paste = '∥'
     let g:airline_symbols.paste = '[PASTE]'
-    " let g:airline_symbols.spell = 'Ꞩ'
-    " let g:airline_symbols.notexists = 'Ɇ'
+    let g:airline_symbols.spell = 'Ꞩ'
+    let g:airline_symbols.notexists = 'Ɇ'
     let g:airline_symbols.whitespace = 'Ξ'
 
     " powerline symbols
@@ -197,11 +238,11 @@ function! AirLineSetup()
     " let g:airline_left_alt_sep = ''
     " let g:airline_right_sep = ''
     " let g:airline_right_alt_sep = ''
-    " let g:airline_symbols.branch = ''
-    " let g:airline_symbols.readonly = ''
+    "let g:airline_symbols.branch = ''
+    "let g:airline_symbols.readonly = ''
     " let g:airline_symbols.linenr = '☰'
     " let g:airline_symbols.maxlinenr = ''
-    let g:airline_symbols.dirty='⚡'
+    "let g:airline_symbols.dirty='⚡'
 
     " old vim-powerline symbols
     " let g:airline_left_sep = '⮀'
@@ -263,7 +304,7 @@ function! IndentLineSetup()
 endfunction
 
 function! CocSetup()
-    let g:coc_global_extensions = ['coc-tsserver', 'coc-clangd', 'coc-html', 'coc-eslint', 'coc-yaml', 'coc-snippets', 'coc-css', 'coc-highlight', 'coc-vetur', 'coc-omnisharp', 'coc-sumneko-lua', 'coc-spell-checker']
+    let g:coc_global_extensions = ['coc-tsserver', 'coc-clangd', 'coc-html', 'coc-eslint', 'coc-yaml', 'coc-snippets', 'coc-css', 'coc-highlight', 'coc-vetur', 'coc-omnisharp', 'coc-sumneko-lua', 'coc-spell-checker', 'coc-pyright']
     "inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 endfunction
 

@@ -1,6 +1,9 @@
 {
-    "lua.enable": true,
     "Lua.completion.enable": true,
     "Lua.hint.enable": true,
-    "codeLens.enable": true
+    "Lua.diagnostics.globals": [
+        "CS", "typeof"
+    ],
+    "codeLens.enable": true,
+    "diagnostic.virtualText": false
 }
