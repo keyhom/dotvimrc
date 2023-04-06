@@ -126,10 +126,44 @@ function! KeyMappingSetup()
     " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
     inoremap <silent><expr> <TAB>
           \ pumvisible() ? "\<C-y>" : "\<TAB>"
-    inoremap <silent><expr> <CR>
-          \ pumvisible() ? "\<C-y>" : "\<CR>"
+	inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                    	          \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+    inoremap <silent><expr> <C-e> coc#pum#visible() ? coc#pum#cancel() : "\<C-e>"
+    inoremap <silent><expr> <C-y> coc#pum#visible() ? coc#pum#confirm() : "\<C-y>"
+
     " Use <c-space> to trigger completion.
-    inoremap <silent><expr> <c-space> coc#refresh()
+    if has('nvim')
+        inoremap <silent><expr> <c-space> coc#refresh()
+    else
+        inoremap <silent><expr> <c-@> coc#refresh()
+    endif
+
+    " Remap keys for gotos
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+
+    " Use `g[` and `g]` to navigate diagnostics
+    nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+    nmap <silent> g] <Plug>(coc-diagnostic-next)
+
+    " Highlight symbol under cursor on CursorHold
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+
+    " Remap for do codeAction of current line
+    nmap <C-.>  <Plug>(coc-codeaction)
+    " Fix autofix problem of current line
+    nmap <leader>.  <Plug>(coc-fix-current)
+
+    " Remap for rename current word
+    nmap <leader>rn <Plug>(coc-rename)
+
+    " Remap for format selected region
+    xmap <leader>f  <Plug>(coc-format-selected)
+    nmap <leader>f  <Plug>(coc-format-selected)
+
     inoremap <S-CR> <ESC>o
     inoremap <C-S-CR> <ESC>O
 endfunction
@@ -286,6 +320,11 @@ function! OtherSetup()
     if exists('g:neovide')
         let g:neovide_cursor_vfx_mode = 'ripple'
     endif
+
+    " Preview window is hidden by default. You can toggle it with ctrl-/.
+    " It will show on the right with 50% width, but if the width is smaller
+    " than 70 columns, it will show above the candidate list
+    let g:fzf_preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-/']
 endfunction
 
 function! IndentLineSetup()
@@ -333,7 +372,7 @@ function! VistaSetup()
     " To enable fzf's preview window set g:vista_fzf_preview.
     " The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
     " For example:
-    let g:vista_fzf_preview = ['right:50%']
+    " let g:vista_fzf_preview = ['right:50%']
     " Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
     let g:vista#renderer#enable_icon = 1
 
@@ -346,7 +385,6 @@ endfunction
 
 function! CocSetup()
     let g:coc_global_extensions = ['coc-tsserver', 'coc-clangd', 'coc-html', 'coc-eslint', 'coc-yaml', 'coc-snippets', 'coc-css', 'coc-highlight', 'coc-vetur', 'coc-omnisharp', 'coc-sumneko-lua', 'coc-spell-checker', 'coc-pyright']
-    "inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 endfunction
 
 call NerdTreeSetup()
