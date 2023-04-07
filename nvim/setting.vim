@@ -74,9 +74,9 @@ function! NerdTreeSetup()
     let NERDTreeWinPos = "left"
 
     " nerdcommenter
-    let NERDSpaceDelims=1
+    let g:NERDSpaceDelims=1
     " nmap <D-/> :NERDComToggleComment<cr>
-    let NERDCompactSexyComs=1
+    let g:NERDCompactSexyComs=1
     let g:NERDCustomDelimiters = {
           \ 'as3': { 'left' : '//', 'leftAlt': '/*', 'rightAlt': '*/' },
           \ 'shaderlab': { 'left' : '//', 'leftAlt': '/*', 'rightAlt': '*/' },

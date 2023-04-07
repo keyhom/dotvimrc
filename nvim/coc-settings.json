@@ -1,4 +1,11 @@
 {
+    "workspace.rootPatterns": [
+        ".vim",
+        ".git",
+        ".hg",
+        ".projections.json"
+    ],
+    "workspace.bottomUpFiletypes": ["*"],
     "Lua.completion.enable": true,
     "Lua.hint.enable": true,
     "Lua.diagnostics.globals": [
