@@ -14,8 +14,6 @@ Plug 'tpope/vim-surround'
 " Fuzzy file, buffer, mru, tag, etc finder.
 Plug 'kien/ctrlp.vim'
 "Plug 'sheerun/vim-polyglot'
-Plug 'BurntSushi/ripgrep'
-Plug 'sharkdp/fd'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -44,6 +42,9 @@ endif
 
 Plug 'tpope/vim-sleuth'
 Plug 'Yggdroot/indentLine'
+" Smart selection of the closest text object.
+Plug 'gcmt/wildfire.vim'
+
 " Visualize your Vim undo tree.
 Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
 Plug 'jiangmiao/auto-pairs'
