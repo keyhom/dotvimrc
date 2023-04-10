@@ -27,7 +27,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'nvim-tree/nvim-web-devicons' " Recommended (for coloured icons)
-" Plug 'ryanoasis/vim-devicons' Icons without colours
+Plug 'ryanoasis/vim-devicons' " Icons without colours
 "Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
 
 Plug 'iamcco/markdown-preview.nvim'

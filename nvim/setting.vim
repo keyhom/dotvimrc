@@ -1,5 +1,4 @@
 let s:is_neovim = has('nvim')
-
 function! CommonSetup()
     filetype plugin indent on
     syntax on
@@ -154,6 +153,7 @@ function! KeyMappingSetup()
 
     " Remap for do codeAction of current line
     nmap <C-.>  <Plug>(coc-codeaction)
+    nmap <leader><leader>.  <Plug>(coc-codeaction)
     " Fix autofix problem of current line
     nmap <leader>.  <Plug>(coc-fix-current)
 
