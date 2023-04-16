@@ -151,6 +151,10 @@ function! KeyMappingSetup()
     " Highlight symbol under cursor on CursorHold
     autocmd CursorHold * silent call CocActionAsync('highlight')
 
+    nmap <leader><space>f :Files<CR>
+    nmap <leader><space>l :Lines<CR>
+    nmap <leader><space>b :Buffers<CR>
+
     " Remap for do codeAction of current line
     nmap <C-.>  <Plug>(coc-codeaction)
     nmap <leader><leader>.  <Plug>(coc-codeaction)
