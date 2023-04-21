@@ -53,12 +53,12 @@ function! CommonSetup()
         set nocompatible
         set t_Co=256
     endif
-    if has("patch-8.1.1904")
-        set completeopt+=popup
-        set completepopup=align:menu,border:off,hightlight:Pmenu
-    endif
+    " if has("patch-8.1.1904")
+        " set completeopt+=popup
+        " set completepopup=align:menu,border:off,highlight:Pmenu
+    " endif
     " don't give |ins-completion-menu| messages.
-    set shortmess+=c
+    " set shortmess+=c
     set bg=
 endfunction
 
@@ -155,6 +155,7 @@ function! KeyMappingSetup()
     nmap <leader><space>g :GFiles<CR>
     nmap <leader><space>l :Lines<CR>
     nmap <leader><space>b :Buffers<CR>
+    nmap <leader><space>o :Vista finder<CR>
 
     " Remap for do codeAction of current line
     nmap <C-.>  <Plug>(coc-codeaction)
@@ -390,6 +391,13 @@ endfunction
 
 function! CocSetup()
     let g:coc_global_extensions = ['coc-tsserver', 'coc-clangd', 'coc-html', 'coc-eslint', 'coc-yaml', 'coc-snippets', 'coc-css', 'coc-highlight', 'coc-vetur', 'coc-omnisharp', 'coc-sumneko-lua', 'coc-spell-checker', 'coc-pyright']
+    augroup CocEasyMotion
+      autocmd!
+      autocmd User EasyMotionPromptBegin silent! CocDisable
+      autocmd User EasyMotionPromptEnd silent! CocEnable
+      " autocmd User EasyMotionPromptBegin call lsp#disable_diagnostics_for_buffer()<CR>
+      " autocmd User EasyMotionPromptEnd call lsp#enable_diagnostics_for_buffer()<CR>
+    augroup END
 endfunction
 
 call NerdTreeSetup()
