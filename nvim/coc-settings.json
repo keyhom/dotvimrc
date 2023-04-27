@@ -12,5 +12,6 @@
         "CS", "typeof"
     ],
     "codeLens.enable": true,
-    "diagnostic.virtualText": false
+    "diagnostic.virtualText": false,
+    "snippets.ultisnips.pythonPrompt": false
 }

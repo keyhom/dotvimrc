@@ -47,16 +47,16 @@ function! CommonSetup()
     if !s:is_neovim
         set ttymouse=sgr
         set balloondelay=250
-        set t_ut=
-        set vb t_vb=
-        au GuiEnter * set t_vb=
+        " set t_ut=
+        " set vb t_vb=
+        " au GuiEnter * set t_vb=
         set nocompatible
-        set t_Co=256
+        " set t_Co=256
     endif
-    " if has("patch-8.1.1904")
-        " set completeopt+=popup
+    if has("patch-8.1.1904")
+        set completeopt+=popup
         " set completepopup=align:menu,border:off,highlight:Pmenu
-    " endif
+    endif
     " don't give |ins-completion-menu| messages.
     " set shortmess+=c
     set bg=
@@ -125,8 +125,8 @@ function! KeyMappingSetup()
     " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
     inoremap <silent><expr> <TAB>
           \ pumvisible() ? "\<C-y>" : "\<TAB>"
-	inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                    	          \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    " inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                                      " \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
     inoremap <silent><expr> <C-e> coc#pum#visible() ? coc#pum#cancel() : "\<C-e>"
     inoremap <silent><expr> <C-y> coc#pum#visible() ? coc#pum#confirm() : "\<C-y>"
@@ -167,8 +167,9 @@ function! KeyMappingSetup()
     nmap <leader>rn <Plug>(coc-rename)
 
     " Remap for format selected region
-    xmap <leader>f  <Plug>(coc-format-selected)
+    vmap <leader>f  <Plug>(coc-format-selected)
     nmap <leader>f  <Plug>(coc-format-selected)
+    nmap <leader>ff  <Plug>(coc-format)
 
     inoremap <S-CR> <ESC>o
     inoremap <C-S-CR> <ESC>O
@@ -331,6 +332,13 @@ function! OtherSetup()
     " It will show on the right with 50% width, but if the width is smaller
     " than 70 columns, it will show above the candidate list
     let g:fzf_preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-/']
+
+    if s:is_neovim 
+        let g:far#source = 'rgnvim'
+    else
+        let g:far#source = 'rg'
+    end
+    let g:far#collapse_result=1
 endfunction
 
 function! IndentLineSetup()
@@ -400,6 +408,10 @@ function! CocSetup()
     augroup END
 endfunction
 
+function! CommandSetup()
+    command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+endfunction
+
 call NerdTreeSetup()
 call CommonSetup()
 call KeyMappingSetup()
@@ -410,6 +422,7 @@ call OtherSetup()
 call IndentLineSetup()
 call VistaSetup()
 call CocSetup()
+call CommandSetup()
 
 color material
 
