@@ -80,9 +80,11 @@ Plug 'rafamadriz/friendly-snippets'
 
 
 " Color Scheme
-Plug 'blueshirts/darcula'
-Plug 'jnurmine/Zenburn'
+" Plug 'blueshirts/darcula'
+" Plug 'jnurmine/Zenburn'
 Plug 'flazz/vim-colorschemes'
+Plug 'rafi/awesome-vim-colorschemes'
 Plug 'altercation/vim-colors-solarized'
+Plug 'rainglow/vim'
 
 call plug#end()
