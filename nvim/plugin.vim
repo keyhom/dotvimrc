@@ -33,6 +33,8 @@ Plug 'ryanoasis/vim-devicons' " Icons without colours
 Plug 'iamcco/markdown-preview.nvim'
 Plug 'ferrine/md-img-paste.vim'
 Plug 'dhruvasagar/vim-table-mode'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
 
 if has('nvim') || has('patch-8.0.902')
   Plug 'mhinz/vim-signify'
@@ -86,5 +88,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'rainglow/vim'
+Plug 'Mofiqul/vscode.nvim'
+Plug 'martinsione/darkplus.nvim'
 
 call plug#end()
