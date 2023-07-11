@@ -17,7 +17,7 @@ Plug 'kien/ctrlp.vim'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': 'TSUpdate' }
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'liuchengxu/vista.vim'
 Plug 'brooth/far.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -57,6 +57,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 "Plug 'luochen1990/rainbow'
+" Plug 'psliwka/vim-smoothie'
 
 " Plug 'neoclide/coc.nvim' { 'branch': 'master', 'do': 'npm install --frozen-lockfile' }
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }

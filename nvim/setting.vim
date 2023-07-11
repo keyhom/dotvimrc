@@ -155,7 +155,8 @@ function! KeyMappingSetup()
     nmap <leader><space>g :GFiles<CR>
     nmap <leader><space>l :Lines<CR>
     nmap <leader><space>b :Buffers<CR>
-    nmap <leader><space>o :Vista finder<CR>
+    nmap <leader><space>o :Vista finder ctags<CR>
+    nmap <leader><space>O :Vista finder coc<CR>
 
     " Remap for do codeAction of current line
     nmap <C-.>  <Plug>(coc-codeaction)
@@ -331,8 +332,11 @@ function! OtherSetup()
     " Preview window is hidden by default. You can toggle it with ctrl-/.
     " It will show on the right with 50% width, but if the width is smaller
     " than 70 columns, it will show above the candidate list
-    " let g:fzf_preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-/']
-    let g:fzf_preview_window = ['right,50%,<70(up,40%)', 'ctrl-/']
+    let g:fzf_preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-_']
+    " let g:fzf_preview_window = ['right,50%,<70(up,40%)', 'ctrl-/']
+    if !s:is_neovim
+        let g:fzf_preview_bash = ''
+    endif
 
     if s:is_neovim 
         let g:far#source = 'rgnvim'
@@ -401,7 +405,7 @@ function! VistaSetup()
 endfunction
 
 function! CocSetup()
-    let g:coc_global_extensions = ['coc-tsserver', 'coc-clangd', 'coc-html', 'coc-eslint', 'coc-yaml', 'coc-snippets', 'coc-css', 'coc-highlight', 'coc-vetur', 'coc-omnisharp', 'coc-sumneko-lua', 'coc-spell-checker', 'coc-pyright']
+    let g:coc_global_extensions = ['coc-tsserver', 'coc-clangd', 'coc-html', 'coc-eslint', 'coc-yaml', 'coc-snippets', 'coc-css', 'coc-highlight', 'coc-vetur', 'coc-sumneko-lua', 'coc-spell-checker', 'coc-pyright']
     augroup CocEasyMotion
       autocmd!
       autocmd User EasyMotionPromptBegin silent! CocDisable
@@ -411,8 +415,18 @@ function! CocSetup()
     augroup END
 endfunction
 
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--disabled', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  " let spec = fzf#vim#with_preview(spec, 'right', 'ctrl-/')
+  call fzf#vim#grep(initial_command, 1, spec, a:fullscreen)
+endfunction
+
 function! CommandSetup()
     command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+    command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 endfunction
 
 call NerdTreeSetup()

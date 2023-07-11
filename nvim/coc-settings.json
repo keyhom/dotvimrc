@@ -5,13 +5,32 @@
         ".hg",
         ".projections.json"
     ],
-    "workspace.bottomUpFiletypes": ["*"],
+    "workspace.bottomUpFiletypes": [
+        "*"
+    ],
     "Lua.completion.enable": true,
     "Lua.hint.enable": true,
     "Lua.diagnostics.globals": [
-        "CS", "typeof"
+        "CS",
+        "typeof"
     ],
     "codeLens.enable": true,
     "diagnostic.virtualText": false,
-    "snippets.ultisnips.pythonPrompt": false
+    "snippets.ultisnips.pythonPrompt": false,
+    "languageserver": {
+        "csharp-ls": {
+            "root_dir": "${workspace}",
+            "command": "csharp-ls",
+            "filetypes": [
+                "cs"
+            ],
+            "rootPatterns": [
+                "*.sln",
+                "*.csproj",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ]
+        }
+    }
 }
