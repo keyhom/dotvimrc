@@ -405,7 +405,7 @@ function! VistaSetup()
 endfunction
 
 function! CocSetup()
-    let g:coc_global_extensions = ['coc-tsserver', 'coc-clangd', 'coc-html', 'coc-eslint', 'coc-yaml', 'coc-snippets', 'coc-css', 'coc-highlight', 'coc-vetur', 'coc-sumneko-lua', 'coc-spell-checker', 'coc-pyright']
+    let g:coc_global_extensions = ['coc-tsserver', 'coc-clangd', 'coc-html', 'coc-eslint', 'coc-yaml', 'coc-snippets', 'coc-css', 'coc-highlight', 'coc-vetur', 'coc-sumneko-lua', 'coc-spell-checker', 'coc-pyright', 'coc-prettier']
     augroup CocEasyMotion
       autocmd!
       autocmd User EasyMotionPromptBegin silent! CocDisable
