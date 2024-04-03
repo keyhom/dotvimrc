@@ -174,6 +174,9 @@ function! KeyMappingSetup()
 
     inoremap <S-CR> <ESC>o
     inoremap <C-S-CR> <ESC>O
+
+    " Nerd Commander
+    nmap gcc <Plug>NERDCommenterToggle
 endfunction
 
 " Rainbow parentheses for Lisp and variants
