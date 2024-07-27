@@ -32,5 +32,15 @@
                 ".hg/"
             ]
         }
-    }
+    },
+    "cSpell.userWords": [
+      "Cinestation",
+      "Ctrls",
+      "ccclass",
+      "ctypes",
+      "lerp",
+      "objectpool",
+      "struct",
+      "xlrd"
+    ]
 }

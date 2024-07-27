@@ -46,6 +46,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'Yggdroot/indentLine'
 " Smart selection of the closest text object.
 Plug 'gcmt/wildfire.vim'
+Plug 'hhatto/autopep8'
 
 " Visualize your Vim undo tree.
 Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
