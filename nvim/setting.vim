@@ -172,6 +172,12 @@ function! KeyMappingSetup()
     nmap <leader>f  <Plug>(coc-format-selected)
     nmap <leader>ff  <Plug>(coc-format)
 
+    " Use gcc for comment toggle.
+    nmap <silent> gcc <leader>c<space>
+    vmap <silent> gcc <leader>c<space>
+
+    nnoremap <silent> gh :call CocActionAsync('doHover')<CR>
+
     inoremap <S-CR> <ESC>o
     inoremap <C-S-CR> <ESC>O
 endfunction

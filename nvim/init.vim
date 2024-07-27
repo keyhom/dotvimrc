@@ -25,8 +25,8 @@ endif
 
 if exists('g:neovide')
     if g:is_darwin
-        set guifont=Cascadia\ Code\ PL,SF\ Mono,Monaco,Menlo,Monospaced:h12
+        set guifont=Cascadia\ Code,SF\ Mono,Monaco,Menlo,Monospaced:h12
     elseif g:is_windows
-        set guifont=Cascadia\ Code\ PL,SF\ Mono,Monaco,Menlo,Monospaced:h10
+        set guifont=Cascadia\ Code,SF\ Mono,Monaco,Menlo,Monospaced:h10
     endif
 endif

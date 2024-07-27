@@ -88,8 +88,9 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'flazz/vim-colorschemes'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'altercation/vim-colors-solarized'
-Plug 'rainglow/vim'
-Plug 'Mofiqul/vscode.nvim'
+Plug 'rainglow/vim' " Rainglow is a collection of color themes for a number of different editors and platforms. This repository consists of 320+ syntax and UI themes for VIM.
+Plug 'Mofiqul/vscode.nvim' " vscode.nvim (formerly codedark.nvim) is a Lua port of vim-code-dark colorscheme for neovim with VScode's light and dark theme
 Plug 'martinsione/darkplus.nvim'
+Plug 'vim-scripts/ShaderHighLight'
 
 call plug#end()

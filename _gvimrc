@@ -1,14 +1,17 @@
 set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
 set nu
 set relativenumber
 colo material
 set mouse=a
 if exists(':GuiFont')
-    GuiFont! Cascadia Code PL Semibold:h11
+    GuiFont! Cascadia Code Semibold:h11
 elseif exists('g:neovide')
-    set gfn=Cascadia_Code_PL:h13
+    set gfn=Cascadia_Code:h13
 else
-    set gfn=Cascadia_Code_PL:h11:cANSI:qDRAFT
+    set gfn=Cascadia_Code:h11:cANSI:qDRAFT
 endif
 
 " Disable Neovim Tabline
